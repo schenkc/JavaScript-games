@@ -31,6 +31,12 @@ var reader = readline.createInterface({
 
   var Player = TicTacToe.Player = function(char) {
     this.char = char;
+    this.type = "Human";
+  };
+
+  var Computer = TicTacToe.Computer = function(char) {
+    this.char = char;
+    this.type = "Computer";
   };
 
   var Game = TicTacToe.Game = function(player1, player2, board) {
