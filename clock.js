@@ -14,6 +14,7 @@ Clock.prototype.run = function(){
 
   var clk = setInterval(function(){
     myClock.tick();
+    // setInterval(myClock.tick.bind(myClock), 5000);
   }, 5000);
 
 };
