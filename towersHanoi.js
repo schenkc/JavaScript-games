@@ -7,7 +7,7 @@ var reader = readline.createInterface({
 (function (root){
   var Hanoi = root.Hanoi = (root.Hanoi || {});
 
-  var Game = root.Game = function(numberDisks, numberPegs) {
+  var Game = Hanoi.Game = function(numberDisks, numberPegs) {
     this.board = new Array();
     this.numberDisks = numberDisks;
 
@@ -20,15 +20,16 @@ var reader = readline.createInterface({
     };
   };
 
-  Game.prototype.play = function(completionCallback){
+
+  Game.prototype.play = function(){
 
     var won = function(){
       return (this.board[this.board.length - 1].length === this.numberDisks);
     };
 
     if (won.bind(this)()){
-
-      completionCallback();
+      console.log("You won!");
+      reader.close()
 
     } else {
 
@@ -86,13 +87,19 @@ var reader = readline.createInterface({
     });
   };
 
-  var game = new Game(2,3);
+  // var game = new Game(2,3);
 
-  game.play(function() {
-    console.log("you won");
-  });
+  // game.play(function() {
+  //   console.log("you won");
+  // });
+
+  // game.play()
 
 })(this);
 
+my_game = new this.Hanoi.Game(2,3)
+my_game.play()
+
 // 1. ourGame is bad -- switch over to 'call' so we can use 'this'
 // 2. completionCallback ain't havin' it
+// 3. Why did we have to wrap everything and/or what did we do wrong
